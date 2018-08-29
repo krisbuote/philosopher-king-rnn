@@ -5,4 +5,5 @@ Original code is from [Andrej Karpathy's char-rnn gist](https://gist.github.com/
 
 Adapted to include save/resume abilities and to use my own collected philosophy dataset that contains ~1 million characters from works by Nietzsche, Plato, Locke, and others.
 
-I was using Google Colab to run this network; there are some preliminary and post-training functions called to upload from and save to the local machine's /downloads/.
+--- UPDATE ---
+I redid this project with Keras and only using Plato's Republic. See the new files.
