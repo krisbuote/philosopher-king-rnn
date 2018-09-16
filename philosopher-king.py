@@ -1,3 +1,9 @@
+'''
+Author: Kristopher Buote
+
+Neural Network that trains on philosophy text sequences to predict the most likely next word.
+Embeddings are learned.
+'''
 import numpy as np
 from keras.preprocessing.text import Tokenizer
 from keras.utils import to_categorical
@@ -9,6 +15,7 @@ filename = 'republic_clean'
 print('Loading data...')
 data = open('./philosophy_data/' + filename + '.txt', 'r').read()  # should be simple plain text file
 lines = data.split('\n')
+lines = lines[0:5]
 print('Done.')
 
 # Integer encoding sequences of words
@@ -40,11 +47,11 @@ model.summary()
 model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 
 # Fit model
-epochs = 100
+epochs = 1
 for e in range(epochs):
     model.fit(X, Y, batch_size=512, epochs=1)
     # if e % 10 == 0:
     model.save('./models/philosopher-king-epoch' + str(e) +'.h5')
     # save the tokenizer
-    pickle.dump(tokenizer, open('tokenizer.pkl', 'wb'))
+    pickle.dump(tokenizer, open('./models/tokenizer.pkl', 'wb'))
 

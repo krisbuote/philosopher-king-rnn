@@ -1,3 +1,8 @@
+'''
+Author: Kristopher Buote
+Generate text with your trained philosopher!
+'''
+
 from keras.models import load_model
 from keras.preprocessing.sequence import pad_sequences
 import pickle
@@ -10,7 +15,7 @@ lines = data.split('\n')
 
 modelEpochNum = 99
 model = load_model('./models/philosopher-king-epoch' + str(modelEpochNum) +'.h5')
-tokenizer = pickle.load(open('tokenizer.pkl', 'rb'))
+tokenizer = pickle.load(open('./models/tokenizer.pkl', 'rb'))
 
 # vocab_size = model.layers[-1].output_shape[0]
 seed_text = lines[np.random.randint(0, len(lines))]
